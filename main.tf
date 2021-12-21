@@ -5,8 +5,8 @@ locals {
   aws_route_table_id  = data.terraform_remote_state.vpc.outputs.default_route_table_id
 
   # Azure VGW Resources
-  public_ip_1         = data.terraform_remote_state.vgw.outputs.public_ip_1
-  public_ip_2         = data.terraform_remote_state.vgw.outputs.public_ip_2
+  public_ip_1         = data.terraform_remote_state.vgw.outputs.virtual_public_ip_1
+  public_ip_2         = data.terraform_remote_state.vgw.outputs.virtual_public_ip_2
   vgw_name            = data.terraform_remote_state.vgw.outputs.virtual_network_gateway_name
 
   # Azure VNET Resources
