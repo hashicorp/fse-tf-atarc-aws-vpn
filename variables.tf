@@ -1,8 +1,3 @@
-variable "name" {
-  type        = string
-  description = "Name that will flow through the VNET resources"
-}
-
 variable "aws_region" {
   type        = string
   description = "AWS Region"
