@@ -2,6 +2,7 @@ locals {
   # AWS Resources
   vpc_id              = data.terraform_remote_state.vpc.outputs.vpc_id
   aws_vpn_gateway_id  = data.terraform_remote_state.vpc.outputs.aws_vpn_gateway_id
+  aws_route_table_id  = data.terraform_remote_state.vpc.outputs.default_route_table_id
 
   # Azure VGW Resources
   public_ip_1         = data.terraform_remote_state.vgw.outputs.public_ip_1
@@ -70,21 +71,21 @@ resource "aws_vpn_connection" "vpn_connection_2" {
 
 resource "aws_vpn_connection_route" "vpn_connection_route_1" {
   # Azure's vnet CIDR
-  destination_cidr_block = azurerm_virtual_network.vnet.address_space[0]
+  destination_cidr_block = local.azure_cidr
   vpn_connection_id      = aws_vpn_connection.vpn_connection_1.id
 }
 
 resource "aws_vpn_connection_route" "vpn_connection_route_2" {
   # Azure's vnet CIDR
-  destination_cidr_block = azurerm_virtual_network.vnet.address_space[0]
+  destination_cidr_block = local.azure_cidr
   vpn_connection_id      = aws_vpn_connection.vpn_connection_2.id
 }
 
 # The route teaching where to go to get to Azure's CIDR
 resource "aws_route" "route_to_azure" {
-  route_table_id = aws_route_table.route_table.id
+  route_table_id = local.aws_route_table_id
 
   # Azure's vnet CIDR
-  destination_cidr_block = azurerm_virtual_network.vnet.address_space[0]
-  gateway_id             = aws_vpn_gateway.vpn_gateway.id
+  destination_cidr_block = local.azure_cidr
+  gateway_id             = local.aws_vpn_gateway_id
 }
