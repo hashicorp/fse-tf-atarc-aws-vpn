@@ -37,14 +37,6 @@ resource "aws_customer_gateway" "customer_gateway_2" {
   }
 }
 
-resource "aws_vpn_gateway" "vpn_gateway" {
-  vpc_id = local.vpc_id
-
-  tags = {
-    Name = "vpn_gateway"
-  }
-}
-
 # We will use information from this piece to finish the Azure configuration on the next Step
 resource "aws_vpn_connection" "vpn_connection_1" {
   vpn_gateway_id      = local.aws_vpn_gateway_id
