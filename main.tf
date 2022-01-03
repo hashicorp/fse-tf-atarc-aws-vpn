@@ -7,9 +7,6 @@ locals {
   # Azure VGW Resources
   public_ip_1         = data.terraform_remote_state.vgw.outputs.virtual_public_ip_1
   public_ip_2         = data.terraform_remote_state.vgw.outputs.virtual_public_ip_2
-  vgw_name            = data.terraform_remote_state.vgw.outputs.virtual_network_gateway_name
-
-  # Azure VNET Resources
   azure_cidr          = data.terraform_remote_state.vnet.outputs.cidr
 }
 

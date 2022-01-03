@@ -14,6 +14,15 @@ terraform {
 provider "azurerm" {
   features {}
 
+  default_tags {
+    tags = {
+      Owner       = "Daniel Fedick"
+      Purpose     = "ATARC DEMO"
+      Terraform   = "true"
+      Environment = "development"
+    }
+  }
+
   subscription_id = var.subscription_id
   client_id       = var.client_id
   client_secret   = var.client_secret
