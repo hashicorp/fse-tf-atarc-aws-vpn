@@ -30,7 +30,7 @@ provider "azurerm" {
 }
 
 provider "aws" {
-
+  region = var.region
   default_tags {
     tags = {
       Owner       = "Daniel Fedick"
