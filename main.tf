@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 locals {
   # AWS Resources
   vpc_id              = data.terraform_remote_state.vpc.outputs.vpc_id
