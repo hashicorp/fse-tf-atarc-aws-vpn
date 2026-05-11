@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2021, 2026
+
 data "terraform_remote_state" "vpc" {
   backend = "remote"
 
