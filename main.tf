@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2021, 2026
+
 locals {
   # AWS Resources
   vpc_id              = data.terraform_remote_state.vpc.outputs.vpc_id
